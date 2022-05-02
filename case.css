@@ -1,0 +1,122 @@
+/**Fill full screen**/
+body {
+    margin: 0;
+    /*Header's css*/
+}
+
+.boxTop {
+    float: left;
+    width: 100%;
+    height: 50px;
+    background-color: black;
+}
+
+.boxLogo {
+    float: left;
+    width: 100%;
+    height: 100px;
+    border-bottom: darkgrey solid;
+    text-align: center;
+}
+
+#logoNike {
+    height: 100px;
+
+}
+/*MENU*/
+.boxMenu {
+    float: left;
+    width: 100%;
+    height: 50px;
+    background-color: lightgrey;
+    padding-bottom: 40px;
+
+}
+ul{
+    magin:0;
+    padding: 0;
+}
+ul li{
+    list-style-type: none;
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 20px;
+}
+ul li:hover ul{
+    display:block;
+    position: absolute;
+}
+ul li a{
+    text-decoration: none;
+    color:black;
+    font-weight: bold;
+}
+ul li ul{
+    display:none;
+    font-size:11pt;
+    background-color: white;
+}
+ul li ul li{
+    float:none;
+    border-bottom:1px gray solid;
+    border-left: 1px lightgrey ;
+    border-right: 1px lightgrey;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+}
+ul li ul li:first-child{
+    border-top:1px gray solid ;
+}
+article{
+    float: left;
+    width: 100%;
+   min-height: 1500px;
+    background-color: white;
+        margin-top: 30px;
+        margin-bottom: 30px;
+}
+.boxProduct{
+    width:25%;
+    float:left;
+    margin-bottom:40px;
+}
+.boxProduct a{
+    color: dimgrey;
+    text-decoration: none;
+}
+.boxProduct a:hover{
+    color: orange;
+    text-decoration: none;
+}
+.boxImg{
+    width:100%
+}
+footer{
+    float: left;
+    width: 100%;
+    height: 400px;
+    background-color: black;
+}
+/*BoxtopCenter helps to contract the html to 80% instead of 100, leaving spaces between the margins*/
+.BoxTopCenter{
+    width:80%;
+    margin: 0 auto;
+}
+.boxTopLeft{
+    float: left;
+    height:100px;
+    padding-top: 15px;
+    color: white;
+}
+.boxTopRight{
+    float: right;
+    height: 100px;
+    padding-top: 15px;
+    color: white;
+}
+.cart{
+    float: none;
+    text-align: center;
+}

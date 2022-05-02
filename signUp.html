@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="case.css">
+</head>
+<body>
+<header>
+    <div class="boxTop">
+        <div class="BoxTopCenter">
+            <div class="boxTopLeft">Hotline:012345678</div>
+            <div class="boxTopRight">
+                <a>|Sign Up|</a>
+                <a>|Sign In|</a>
+                <a>|Contact|</a>
+            </div>
+        </div>
+    </div>
+    <div class="boxLogo">
+        <img id="logoNike"
+             src="https://cdn.dal.ca/content/dam/dalhousie/images/sites/hlhlc/sportchek_logo_262x208.jpg.lt_0596f4381f282eb5ddfbb70982c8b61d.res/sportchek_logo_262x208.jpg"
+             alt="">
+    </div>
+    <br>
+    <div class="boxMenu">
+        <div class="BoxTopCenter">
+            <ul>
+                <li><a href="HomeButton.html">HOME</a></li>
+                <li><a href="">CLOTHING</a>
+                    <ul>
+                        <li><a href="">TEE</a></li>
+                        <li><a href="">HOODIE</a></li>
+                        <li><a href="">PANTS</a></li>
+                        <li><a href="">SHORTS</a></li>
+                        <li><a href="">JACKET</a></li>
+
+                    </ul>
+                </li>
+                <li><a href="">ALL ITEMS</a></li>
+                <li><a href="">CONTACT</a> </li>
+                <li><a href="">CLEARANCE SALE</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<article>
+    <table>
+        <tr>
+            <td>Firstname: </td>
+            <td>
+                <input type="text" id="firstname">
+            </td>
+        </tr>
+        <tr>
+            <td>Lastname: </td>
+            <td>
+                <input type="text" id="lastname">
+            </td>
+        </tr>
+        <tr>
+            <td>Age: </td>
+            <td>
+                <input type="text" id="age">
+            </td>
+        </tr>
+        <tr>
+            <td>Email: </td>
+            <td>
+                <input type="email" id="email">
+            </td>
+        </tr>
+    </table>
+    <br>
+    <button onclick="create()">ADD</button>
+    <br>
+    <br>
+    <hr>
+    <table border="1" id="display"  style="width: 70%; text-align: left"></table>
+</article>
+
+<footer>
+
+</footer>
+</body>
+</html>
+<script>
+    class Customer{
+        firstname;
+        lastname;
+        age;
+        email;
+        constructor(firstname,lastname,age,email) {
+            this.firstname = firstname ;
+            this.lastname = lastname;
+            this.age = age;
+            this.email = email;
+        }
+    }
+
+    let customer = [new Customer("ex:Michael","Jordan", "59","abcd.gmail.com",)]
+
+    function create (){
+        let firstname = document.getElementById('firstname').value;
+        let lastname = document.getElementById('lastname').value;
+        let age = document.getElementById('age').value;
+        let email = document.getElementById('email').value;
+        customer.push(new Customer(firstname,lastname,age,email,))
+        show()
+    }
+    function show() {
+        let str = "";
+        for (let i = 0; i < customer.length; i++) {
+            str += "<tr>"
+            str += `<td>${i + 1}</td>`
+            str += `<td>${customer[i].firstname}</td>`
+            str += `<td>${customer[i].lastname}</td>`
+            str += `<td>${customer[i].age}</td>`
+            str += `<td>${customer[i].email}</td>`
+            str += `<td><button onclick="showEdit(${i})">Edit</button></td>`
+            str += `<td><button onclick="deleteP(${i})">Delete</button></td>`
+            str += "</tr>"
+        }
+        document.getElementById("display").innerHTML = str;
+    }
+    indexEdit = -1
+    function showEdit(index){
+        document.getElementById('firstname').value = customer[index].firstname;
+        document.getElementById('lastname').value = customer[index].lastname;
+        document.getElementById('age').value = customer[index].age;
+        document.getElementById('email').value = customer[index].email;
+        indexEdit = index;
+    }
+    function saveEdit() {
+        let firstname = document.getElementById('firstname').value;
+        let lastname = document.getElementById('lastname').value;
+        let age = document.getElementById('age').value;
+        let email = document.getElementById('email').value;
+        customer[indexEdit] = new Customer(firstname,lastname,age,email);
+        show();
+        indexEdit = -1;
+    }
+
+    function deleteP(index) {
+        customer.splice(index, 1);
+        show();
+    }
+
+    show();
+</script>
