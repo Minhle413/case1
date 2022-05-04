@@ -28,9 +28,9 @@
                 <li><a href="HomeButton.html">HOME</a></li>
                 <li><a href="">CLOTHING</a>
                     <ul>
-                        <li><a href="TEE.html">TEE</a></li>
+                        <li><a href="">TEE</a></li>
                         <li><a href="">HOODIE</a></li>
-                        <li><a href="pants.html">PANTS</a></li>
+                        <li><a href="">PANTS</a></li>
                         <li><a href="">SHORTS</a></li>
                         <li><a href="">JACKET</a></li>
 
@@ -43,20 +43,26 @@
     </div>
 </header>
 <article>
-    <!--1-->
-    <div class="BoxTopCenter">
-        <div class="boxProduct">
-            <div class="boxImg">
-                <img src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/e13ec4a95aaf4d1ab1baadf801135337_9366/BrandLove_Woven_Block_Jacket_Black_HE7428_21_model.jpg"
-                     alt="" style="width:300px; height:350px">
-                <br>
-                <a href="#">
-                    BRANDLOVE WOVEN BLOCK JACKET
-                </a>
-                <p>2,100,000₫</p>
-            </div>
-        </div>
-    </div>
+    <table border="1">
+        <tr>
+            <td>Username: </td>
+            <td>
+                <input type="text" id="username">
+            </td>
+        </tr>
+        <tr>
+            <td>Password: </td>
+            <td>
+                <input type="password" id="password">
+            </td>
+        </tr>
+    </table>
+    <br>
+    <button onclick="create()">Log In</button>
+    <br>
+    <br>
+    <hr>
+    <table border="1" id="display"  style="width: 70%; text-align: left"></table>
 </article>
 
 <footer>
@@ -64,10 +70,8 @@
         <div class="boxCenter2">
             <div class="boxfooter1">
                 <h4>FOLLOW US</h4>
-                <img src="https://icon-library.com/images/black-and-white-twitter-icon/black-and-white-twitter-icon-11.jpg"
-                     alt="" style="width:30px; height:30px">
-                <img src="https://pnggrid.com/wp-content/uploads/2021/04/facebook-white-circle-1024x1024.png" alt=""
-                     style="width:30px;height:30px">
+                <img src="https://icon-library.com/images/black-and-white-twitter-icon/black-and-white-twitter-icon-11.jpg" alt="" style="width:30px; height:30px">
+                <img src="https://pnggrid.com/wp-content/uploads/2021/04/facebook-white-circle-1024x1024.png" alt="" style="width:30px;height:30px">
             </div>
             <div class="boxfooter2">
                 <h4>POLICIES</h4>
@@ -111,3 +115,55 @@
 </footer>
 </body>
 </html>
+<script>
+    class User{
+        username;
+        password;
+        constructor(username,password) {
+            this.username=username;
+            this.password=password;
+        }
+    }
+
+    let user = [new User("ex:abcdfgh","12345")]
+
+    function create (){
+        let username = document.getElementById('username').value;
+        let password = document.getElementById('password').value;
+        user.push(new User(username,password))
+        show()
+    }
+    function show() {
+        let str = "";
+        for (let i = 0; i < user.length; i++) {
+            str += "<tr>"
+            str += `<td>${i + 1}</td>`
+            str += `<td>${user[i].username}</td>`
+            str += `<td>${user[i].password}</td>`
+            str += `<td><button onclick="showEdit(${i})">Edit</button></td>`
+            str += `<td><button onclick="deleteP(${i})">Delete</button></td>`
+            str += "</tr>"
+        }
+        document.getElementById("display").innerHTML = str;
+    }
+    indexEdit = -1
+    function showEdit(index){
+        document.getElementById('username').value = user[index].username;
+        document.getElementById('password').value = user[index].password;
+        indexEdit = index;
+    }
+    function saveEdit() {
+        let username = document.getElementById('username').value;
+        let password = document.getElementById('password').value;
+        user[indexEdit] = new User(username,password);
+        show();
+        indexEdit = -1;
+    }
+
+    function deleteP(index) {
+        user.splice(index, 1);
+        show();
+    }
+
+    show();
+</script>

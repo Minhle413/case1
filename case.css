@@ -120,3 +120,30 @@ footer{
     float: none;
     text-align: center;
 }
+/*Footer*/
+.row{
+    float: left;
+    width:100%;
+}
+.boxCenter2{
+    width:50%;
+    margin:0 auto;
+}
+.boxfooter1{
+    width:15%;
+    float:left;
+    color: white;
+    margin-bottom: 10px;
+}
+.boxfooter2{
+    width:25%;
+    float:left;
+    color: white;
+    margin-bottom: 10px;
+}
+.boxfooter3{
+    width:60%;
+    float:left;
+    color: white;
+    margin-bottom: 10px;
+}
